@@ -50,11 +50,11 @@ function Table() {
     const filterByOption = (e) => {
         if(e.target.value === "smaller") {
             const areaLtu = [...countries].find(country => country.name ==="Lithuania").area;
-            const fillteredSmall = countries.filter(c => c.area < areaLtu);   
+            const fillteredSmall = [...countries].filter(c => c.area < areaLtu);   
             setCountries(fillteredSmall);
             setFilter(e.target.value);
         } else if(e.target.value ==="oceania") {
-            const filteredOceania = countries.filter(region => region.region ==="Oceania")
+            const filteredOceania = [...countries].filter(region => region.region ==="Oceania")
             setCountries(filteredOceania);
             setFilter(e.target.value);
         } else{ 
@@ -68,7 +68,7 @@ function Table() {
 
     const indexOfLasCountry = currentPage * countriesPerPage;
     const indexOfFirstPost = indexOfLasCountry - countriesPerPage;
-    const currentCountry = [...countries].slice(indexOfFirstPost,indexOfLasCountry);
+    const currentCountry = countries.slice(indexOfFirstPost,indexOfLasCountry);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     
